@@ -128,6 +128,9 @@ RUN set -ex \
     && apt-get autoremove -yqq --purge \
     && apt-get clean 
 
+RUN pip install -i http://pypi.douban.com/simple --trusted-host pypi.douban.com  selenium airflow-code-editor
+RUN apt-get install -yqq git  libglib2.0 libnss3 libgconf-2-4 libfontconfig1
+
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
